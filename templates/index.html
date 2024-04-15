@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Values</title>
+    <!-- Add loading spinner CSS -->
+
+    <style>
+        
+        #center {
+            height: 100vh;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            /* background: #000; */
+            position: fixed;
+            display:none;
+            height: 100%;
+            width: 100%;
+            z-index: 999;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .wave {
+            width: 5px;
+            height: 100px;
+            background: linear-gradient(45deg, cyan, #fff);
+            margin: 10px;
+            animation: wave 1s linear infinite;
+            border-radius: 20px;
+        }
+        .wave:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        .wave:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        .wave:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+        .wave:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+        .wave:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+        .wave:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+        .wave:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+        .wave:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+        .wave:nth-child(10) {
+            animation-delay: 0.9s;
+        }
+        @keyframes wave {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <div id="center">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
+    <!-- <h1>Values from Voice Input</h1> -->
+    <button id="speakButton">Speak</button>
+    <div id="values">
+        <table id="displayTable">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Units</th>
+                    <th>No Of Items</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Table body will be filled dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <button id="generate">Generate</button>
+    <div id="totalPrice"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
