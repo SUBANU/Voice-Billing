@@ -7,7 +7,8 @@
     <!-- Add loading spinner CSS -->
 
     <style>
-        
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant&display=swap');
+
         #center {
             height: 100vh;
             /* display: flex; */
@@ -67,10 +68,136 @@
                 transform: scale(0);
             }
         }
+        body {
+            font-family: 'Cormorant', serif; /* Use a professional font */
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9; /* Light background */
+            color: #333; /* Dark text color */
+        }
+
+        h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid rgb(40, 167, 69,0.5); /* Green border */
+    background-color: rgb(40, 167, 69,0.5); /* Green background color */
+    color: #fff; /* White text color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+        #speakButton {
+            display: block;
+            margin: 0 auto;
+            padding: 0; /* Remove default button padding */
+            border: none; /* Remove default button border */
+            background: none; /* Transparent background */
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        #speakButton img {
+            width: 80px; /* Set the width of the image */
+            height: auto; /* Maintain aspect ratio */
+            margin-left: -30px;
+        }
+
+        #speakButton:hover {
+            opacity: 0.8; /* Reduce opacity on hover */
+        }
+
+        #generate {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(40, 167, 69,0.5); /* Professional green color for buttons */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            align-items: center;
+        }
+
+        #generate:hover {
+            background-color: rgb(40, 167, 69,0.5); /* Darker shade of green on hover */
+        }
+
+        #values {
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+
+        #displayTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        #displayTable th,
+        #displayTable td {
+            border: 1px solid #ddd; /* Light gray border */
+            padding: 8px;
+            text-align: left;
+        }
+
+        #displayTable th {
+            background-color: #f2f2f2; /* Light gray background for table headers */
+        }
+
+        /* Styles for the invoice */
+        .invoice {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            border: 2px solid rgb(40, 167, 69,0.2); /* Green border */
+        }
+
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .invoice-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #000000; /* Professional green color */
+        }
+
+        .item {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .item span {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #555; /* Dark gray color */
+        }
+
+        .total-amount {
+            margin-top: 20px;
+            text-align: right;
+            border-top: 2px solid #28a745; /* Green top border */
+            padding-top: 10px;
+            color: #000000; /* Green color for total amount */
+        }
+
+        .date-time {
+            margin-top: 10px;
+            text-align: right;
+            color: #777; /* Light gray color */
+        }
     </style>
 
 </head>
 <body>
+    <h1>Voice Billing</h1>
     <div id="center">
         <div class="wave"></div>
         <div class="wave"></div>
@@ -84,16 +211,16 @@
         <div class="wave"></div>
     </div>
     <!-- <h1>Values from Voice Input</h1> -->
-    <button id="speakButton">Speak</button>
+    <button id="speakButton"><img src="https://cdn-icons-png.flaticon.com/512/4670/4670377.png" alt="Speak image"/></button>
     <div id="values">
         <table id="displayTable">
             <thead>
                 <tr>
-                    <th>Item Name</th>
-                    <th>Quantity</th>
-                    <th>Units</th>
-                    <th>No Of Items</th>
-                    <th>Amount</th>
+                    <th style="width: 25%;">Item Name</th>
+                    <th style="width: 15%;">Quantity</th>
+                    <th style="width: 15%;">Units</th>
+                    <th style="width: 15%;">No Of Items</th>
+                    <th style="width: 30%;">Amount</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
@@ -102,7 +229,7 @@
         </table>
     </div>
     <button id="generate">Generate</button>
-    <div id="totalPrice"></div>
+    <div id="invoiceContainer"></div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
